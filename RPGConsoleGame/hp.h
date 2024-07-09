@@ -24,4 +24,3 @@ private:
 	hp_t m_currentHP;
 	hp_t m_maxHP;
 };
-
