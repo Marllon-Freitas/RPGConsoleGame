@@ -1,11 +1,24 @@
 #include "hp.h"
 
-hp::hp()
+Hp::Hp()
 {
+	m_currentHP = 1;
+	m_maxHP = 1;
+}
+
+Hp::Hp(hp_t currentHP, hp_t maxHP)
+{
+	if (currentHP < 1) currentHP = 1;
+	if (maxHP < 1) maxHP = 1;
+
+	m_currentHP = currentHP;
+	m_maxHP = maxHP;
+
+	if (m_currentHP > m_maxHP) m_currentHP = m_maxHP;
 }
 
 
-bool hp::setMaxHP(hp_t newMaxHP)
+bool Hp::setMaxHP(hp_t newMaxHP)
 {
 	if (newMaxHP < 1) return false;
 
@@ -16,7 +29,7 @@ bool hp::setMaxHP(hp_t newMaxHP)
 	return true;
 }
 
-void hp::takeDamage(hp_t damage)
+void Hp::takeDamage(hp_t damage)
 {
 	if (damage > m_currentHP)
 	{
@@ -29,7 +42,7 @@ void hp::takeDamage(hp_t damage)
 	return;
 }
 
-void hp::heal(hp_t healAmount)
+void Hp::heal(hp_t healAmount)
 {
 	if (m_currentHP + healAmount > m_maxHP)
 	{
@@ -42,6 +55,6 @@ void hp::heal(hp_t healAmount)
 	return;
 }
 
-hp::~hp()
+Hp::~Hp()
 {
 }

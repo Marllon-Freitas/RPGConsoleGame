@@ -1,11 +1,12 @@
 #pragma once
 
-#include "hitPointTypes.h"
+#include "typeDef.h"
 
-class hp
+class Hp
 {
 public:
-	hp();
+	Hp();
+	Hp(hp_t currentHP, hp_t maxHP);
 
 	// Getters
 	hp_t getCurrentHP() const { return m_currentHP; }
@@ -18,7 +19,7 @@ public:
 	void takeDamage(hp_t damage);
 	void heal(hp_t healAmount);
 
-	~hp();
+	~Hp();
 
 private:
 	hp_t m_currentHP;
