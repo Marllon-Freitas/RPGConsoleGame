@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Cleric.cpp" />
     <ClCompile Include="Hp.cpp" />
+    <ClCompile Include="LevelSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rogue.cpp" />
     <ClCompile Include="StatsInfo.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="allClassesIncludes.h" />
     <ClInclude Include="Cleric.h" />
     <ClInclude Include="includes.h" />
+    <ClInclude Include="LevelSystem.h" />
     <ClInclude Include="Rogue.h" />
     <ClInclude Include="StatsInfo.h" />
     <ClInclude Include="typeDef.h" />

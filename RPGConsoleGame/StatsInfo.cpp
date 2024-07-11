@@ -15,3 +15,11 @@ StatsInfo::StatsInfo(stats_t str, stats_t dex, stats_t intel, stats_t feith)
 	m_Intelligence = intel;
 	m_Feith = feith;
 }
+
+void StatsInfo::increaseStats(stats_t str, stats_t dex, stats_t intel, stats_t feith)
+{
+	m_Strength += str;
+	m_Dexterity += dex;
+	m_Intelligence += intel;
+	m_Feith += feith;
+}

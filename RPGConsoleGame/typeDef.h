@@ -11,3 +11,9 @@ typedef uint16_t mp_t;		// Magic points
 
 // type of the  status of the character(strength, dexterity, intelligence, etc.)
 typedef uint16_t stats_t;
+
+// type of the experience points
+typedef uint64_t exp_t;
+
+// type of the level of the character
+typedef uint16_t level_t;

@@ -2,8 +2,9 @@
 
 #include "Hp.h"
 #include "statsInfo.h"
+#include "LevelSystem.h"
 
-class Rogue : public Hp, public StatsInfo
+class Rogue : public Hp, public StatsInfo, public LevelSystem
 {
 public:
 	Rogue();
@@ -14,6 +15,7 @@ public:
 	// Setters
 
 	// Functions
+	void levelUp() override;
 
 private:
 
