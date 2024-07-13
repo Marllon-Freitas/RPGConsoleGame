@@ -10,12 +10,12 @@
 
 int main()
 {
-	PlayerCharacter cleric(new Warrior());
+	PlayerCharacter cleric(new Cleric());
 
 	for (int i = 0; i < 2; i++)
 	{
 		std::cout << "---------------------------------------\n"
-			<< "|            Character Stats          |\n"
+			<< "|            Character Info           |\n"
 			<< "---------------------------------------\n"
 			<< "| Class:      " << cleric.getClassName() << "                  |\n"
 			<< "| Level:      " << cleric.getCurrentLevel() << "                       |\n"
@@ -29,6 +29,8 @@ int main()
 			<< "| DEX:        " << cleric.getDexterity() << "                       |\n"
 			<< "| INT:        " << cleric.getIntelligence() << "                       |\n"
 			<< "| FEITH:      " << cleric.getFeith() << "                      |\n"
+			<< "| ARMOR:      " << cleric.getArmor() << "                       |\n"
+			<< "| E. RES:     " << cleric.getElementalResistance() << "                       |\n"
 			<< "---------------------------------------\n";
 		cleric.gainExperience(100);
 	}

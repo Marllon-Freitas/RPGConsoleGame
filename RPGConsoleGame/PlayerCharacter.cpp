@@ -1,6 +1,6 @@
 #include "PlayerCharacter.h"
 
-PlayerCharacterDelegate::PlayerCharacterDelegate() : StatsInfo(0, 0, 0, 0)
+PlayerCharacterDelegate::PlayerCharacterDelegate() : StatsInfo(0, 0, 0, 0, 0, 0)
 {
 	m_currentLevel = 1;
 	m_currentExperience = 0;

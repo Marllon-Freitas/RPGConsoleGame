@@ -63,6 +63,8 @@ public:
 	stats_t getDexterity() const { return m_playerCharacterClass->getDexterity(); }
 	stats_t getIntelligence() const { return m_playerCharacterClass->getIntelligence(); }
 	stats_t getFeith() const { return m_playerCharacterClass->getFeith(); }
+	stats_t getArmor() const { return m_playerCharacterClass->getArmor(); }
+	stats_t getElementalResistance() const { return m_playerCharacterClass->getElementalResistance(); }
 
 	// Functions
 	void gainExperience(exp_t amount) { m_playerCharacterClass->gainExperience(amount); }

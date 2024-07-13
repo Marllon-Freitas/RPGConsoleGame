@@ -5,23 +5,41 @@ static const stats_t CLERIC_BASE_STR = 2;
 static const stats_t CLERIC_BASE_DEX = 2;
 static const stats_t CLERIC_BASE_INT = 2;
 static const stats_t CLERIC_BASE_FEITH = 4;
+static const stats_t CLERIC_BASE_ARMOR = 0;
+static const stats_t CLERIC_BASE_ELEMENTAL_RESISTANCE = 0;
 
 static const hp_t CLERIC_HP_GROWTH = 7;
 static const stats_t CLERIC_STR_GROWTH = 1;
 static const stats_t CLERIC_DEX_GROWTH = 1;
 static const stats_t CLERIC_INT_GROWTH = 1;
 static const stats_t CLERIC_FEITH_GROWTH = 2;
+static const stats_t CLERIC_ARMOR_GROWTH = 0;
+static const stats_t CLERIC_ELEMENTAL_RESISTANCE_GROWTH = 0;
 
 Cleric::Cleric() : PlayerCharacterDelegate()
 {
 	HP->setMax(CLERIC_BASE_HP);
 	HP->increaseCurrent(CLERIC_BASE_HP);
-	increaseStats(CLERIC_BASE_STR, CLERIC_BASE_DEX, CLERIC_BASE_INT, CLERIC_BASE_FEITH);
+	increaseStats(
+		CLERIC_BASE_STR,
+		CLERIC_BASE_DEX,
+		CLERIC_BASE_INT,
+		CLERIC_BASE_FEITH,
+		CLERIC_BASE_ARMOR,
+		CLERIC_BASE_ELEMENTAL_RESISTANCE
+	);
 }
 
 void Cleric::levelUp()
 {
 	HP->setMax(HP->getMax() + CLERIC_HP_GROWTH);
 	HP->increaseCurrent(CLERIC_HP_GROWTH);
-	increaseStats(CLERIC_STR_GROWTH, CLERIC_DEX_GROWTH, CLERIC_INT_GROWTH, CLERIC_FEITH_GROWTH);
+	increaseStats(
+		CLERIC_STR_GROWTH,
+		CLERIC_DEX_GROWTH,
+		CLERIC_INT_GROWTH,
+		CLERIC_FEITH_GROWTH,
+		CLERIC_ARMOR_GROWTH,
+		CLERIC_ELEMENTAL_RESISTANCE_GROWTH
+	);
 }
