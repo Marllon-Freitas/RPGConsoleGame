@@ -11,7 +11,7 @@ typedef uint16_t mp_t;		// Magic points
 typedef uint16_t faith_t;	// Faith points
 
 // type of the  status of the character(strength, dexterity, intelligence, etc.)
-typedef uint16_t stats_t;
+typedef int16_t stats_t;
 
 // type of the experience points
 typedef uint64_t exp_t;

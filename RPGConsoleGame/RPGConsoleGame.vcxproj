@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ability.h" />
+    <ClInclude Include="Buff.h" />
     <ClInclude Include="Cleric.h" />
     <ClInclude Include="Colors.h" />
     <ClInclude Include="includes.h" />

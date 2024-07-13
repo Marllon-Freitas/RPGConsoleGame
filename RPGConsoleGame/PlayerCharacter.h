@@ -24,6 +24,7 @@ public:
 	// Functions
 	bool levelUpAvailable() const { return m_currentExperience >= m_experienceToNextLevel; }
 	void gainExperience(exp_t experience);
+	void applyBuff(Buff buff);
 
 	virtual void levelUp() = 0;
 	std::unique_ptr<PointManager> HP;
@@ -73,18 +74,26 @@ public:
 		return m_playerCharacterClass->MP->getCurrent();
 	}
 
-	//get stats info
-	stats_t getStrength() const { return m_playerCharacterClass->getStrength(); }
-	stats_t getDexterity() const { return m_playerCharacterClass->getDexterity(); }
-	stats_t getIntelligence() const { return m_playerCharacterClass->getIntelligence(); }
-	stats_t getFaith() const { return m_playerCharacterClass->getFaith(); }
-	stats_t getArmor() const { return m_playerCharacterClass->getArmor(); }
-	stats_t getElementalResistance() const { return m_playerCharacterClass->getElementalResistance(); }
+	//get base stats info
+	stats_t getStrength() const { return m_playerCharacterClass->getBaseStrength(); }
+	stats_t getDexterity() const { return m_playerCharacterClass->getBaseDexterity(); }
+	stats_t getIntelligence() const { return m_playerCharacterClass->getBaseIntelligence(); }
+	stats_t getFaith() const { return m_playerCharacterClass->getBaseFaith(); }
+	stats_t getArmor() const { return m_playerCharacterClass->getBaseArmor(); }
+	stats_t getElementalResistance() const { return m_playerCharacterClass->getBaseElementalResistance(); }
+	//get total stats info
+	stats_t getTotalStrength() const { return m_playerCharacterClass->getTotalStrength(); }
+	stats_t getTotalDexterity() const { return m_playerCharacterClass->getTotalDexterity(); }
+	stats_t getTotalIntelligence() const { return m_playerCharacterClass->getTotalIntelligence(); }
+	stats_t getTotalFaith() const { return m_playerCharacterClass->getTotalFaith(); }
+	stats_t getTotalArmor() const { return m_playerCharacterClass->getTotalArmor(); }
+	stats_t getTotalElementalResistance() const { return m_playerCharacterClass->getTotalElementalResistance(); }
 
 	// Functions
 	void gainExperience(exp_t amount) { m_playerCharacterClass->gainExperience(amount); }
 	void takeDamage(pointM_t amount) { m_playerCharacterClass->HP->reduceCurrent(amount); }
 	void heal(pointM_t amount) { m_playerCharacterClass->HP->increaseCurrent(amount); }
+	void applyBuff(Buff buff) { m_playerCharacterClass->applyBuff(buff); }
 
 	// Abilities
 	std::vector<Ability> getAbilities() const { return m_playerCharacterClass->abilities; }

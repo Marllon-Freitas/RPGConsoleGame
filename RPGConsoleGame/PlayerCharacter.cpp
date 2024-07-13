@@ -15,6 +15,11 @@ void PlayerCharacterDelegate::gainExperience(exp_t experience)
 		levelUp();
 }
 
+void PlayerCharacterDelegate::applyBuff(Buff buff)
+{
+	addNewBuff(buff);
+}
+
 bool PlayerCharacterDelegate::checkIfLevelUp()
 {
 	if (m_currentExperience >= m_experienceToNextLevel)

@@ -27,12 +27,12 @@ int main()
 			<< "---------------------------------------\n"
 			<< "|               Stats                 |\n"
 			<< "---------------------------------------\n"
-			<< "| STR:         " << cleric.getStrength() << "                      |\n"
-			<< "| DEX:         " << cleric.getDexterity() << "                      |\n"
-			<< "| INT:         " << cleric.getIntelligence() << "                      |\n"
-			<< "| FAITH:       " << cleric.getFaith() << "                      |\n"
-			<< "| ARMOR:       " << cleric.getArmor() << "                      |\n"
-			<< "| E. RES:      " << cleric.getElementalResistance() << "                      |\n"
+			<< "| STR:         " << cleric.getTotalStrength() << "                      |\n"
+			<< "| DEX:         " << cleric.getTotalDexterity() << "                      |\n"
+			<< "| INT:         " << cleric.getTotalIntelligence() << "                      |\n"
+			<< "| FAITH:       " << cleric.getTotalFaith() << "                      |\n"
+			<< "| ARMOR:       " << cleric.getTotalArmor() << "                      |\n"
+			<< "| E. RES:      " << cleric.getTotalElementalResistance() << "                      |\n"
 			<< "---------------------------------------\n";
 
 		auto abilities = cleric.getAbilities();
@@ -48,7 +48,22 @@ int main()
 				<< "---------------------------------------\n";
 		}
 
-		cleric.gainExperience(100);
+		if (i < 1) {
+			cleric.gainExperience(100);
+			Buff armorBuff(
+				"Armor Buff",
+				"Boost armor by 5",
+				0,
+				4,
+				0,
+				0,
+				0,
+				0,
+				0,
+				true
+			);
+			cleric.applyBuff(armorBuff);
+		}
 	}
 
 	return 0;
