@@ -8,6 +8,7 @@
 
 typedef uint16_t hp_t;		// Health points
 typedef uint16_t mp_t;		// Magic points
+typedef uint16_t faith_t;	// Faith points
 
 // type of the  status of the character(strength, dexterity, intelligence, etc.)
 typedef uint16_t stats_t;

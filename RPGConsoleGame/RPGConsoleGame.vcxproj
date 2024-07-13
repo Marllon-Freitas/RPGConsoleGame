@@ -137,6 +137,7 @@
     <ClCompile Include="Wizard.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ability.h" />
     <ClInclude Include="Cleric.h" />
     <ClInclude Include="Colors.h" />
     <ClInclude Include="includes.h" />

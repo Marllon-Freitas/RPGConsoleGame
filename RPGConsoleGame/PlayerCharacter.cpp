@@ -5,7 +5,7 @@ PlayerCharacterDelegate::PlayerCharacterDelegate() : StatsInfo(0, 0, 0, 0, 0, 0)
 	m_currentLevel = 1;
 	m_currentExperience = 0;
 	m_experienceToNextLevel = 100;
-	HP = std::make_unique<PointManager>();
+	HP = std::make_unique<PointManager>(1, 1);
 }
 
 void PlayerCharacterDelegate::gainExperience(exp_t experience)

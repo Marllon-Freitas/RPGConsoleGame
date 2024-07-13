@@ -1,10 +1,9 @@
 #pragma once
 
-#include <memory>
-
 #include "typeDef.h"
 #include "StatsInfo.h"
 #include "PointManager.h"
+#include "Ability.h"
 
 class PlayerCharacterDelegate : public StatsInfo
 {
@@ -28,6 +27,10 @@ public:
 
 	virtual void levelUp() = 0;
 	std::unique_ptr<PointManager> HP;
+	std::unique_ptr<PointManager> MP;
+
+	//Abilities
+	std::vector<Ability> abilities;
 
 	~PlayerCharacterDelegate() = default;
 
@@ -58,11 +61,23 @@ public:
 	pointM_t getMaxHP() const { return m_playerCharacterClass->HP->getMax(); }
 	pointM_t getCurrentHP() const { return m_playerCharacterClass->HP->getCurrent(); }
 
+	// get mp info
+	pointM_t getMaxMP() {
+		if (m_playerCharacterClass->MP == nullptr)
+			return 0;
+		return m_playerCharacterClass->MP->getMax();
+	}
+	pointM_t getCurrentMP() {
+		if (m_playerCharacterClass->MP == nullptr)
+			return 0;
+		return m_playerCharacterClass->MP->getCurrent();
+	}
+
 	//get stats info
 	stats_t getStrength() const { return m_playerCharacterClass->getStrength(); }
 	stats_t getDexterity() const { return m_playerCharacterClass->getDexterity(); }
 	stats_t getIntelligence() const { return m_playerCharacterClass->getIntelligence(); }
-	stats_t getFeith() const { return m_playerCharacterClass->getFeith(); }
+	stats_t getFaith() const { return m_playerCharacterClass->getFaith(); }
 	stats_t getArmor() const { return m_playerCharacterClass->getArmor(); }
 	stats_t getElementalResistance() const { return m_playerCharacterClass->getElementalResistance(); }
 
@@ -71,6 +86,8 @@ public:
 	void takeDamage(pointM_t amount) { m_playerCharacterClass->HP->reduceCurrent(amount); }
 	void heal(pointM_t amount) { m_playerCharacterClass->HP->increaseCurrent(amount); }
 
+	// Abilities
+	std::vector<Ability> getAbilities() const { return m_playerCharacterClass->abilities; }
 
 private:
 	PlayerCharacterDelegate* m_playerCharacterClass;

@@ -7,5 +7,7 @@
 #include <iostream>
 #include <cstdint>
 #include <string>
+#include <vector>
+#include <memory>
 
 #include "Colors.h"
