@@ -1,20 +1,21 @@
-#include "LevelSystem.h"
+#include "PlayerCharacter.h"
 
-LevelSystem::LevelSystem()
+PlayerCharacterDelegate::PlayerCharacterDelegate() : StatsInfo(0, 0, 0, 0)
 {
 	m_currentLevel = 1;
 	m_currentExperience = 0;
 	m_experienceToNextLevel = 100;
+	HP = std::make_unique<PointManager>();
 }
 
-void LevelSystem::gainExperience(exp_t experience)
+void PlayerCharacterDelegate::gainExperience(exp_t experience)
 {
 	m_currentExperience += experience;
 	while (checkIfLevelUp())
 		levelUp();
 }
 
-bool LevelSystem::checkIfLevelUp()
+bool PlayerCharacterDelegate::checkIfLevelUp()
 {
 	if (m_currentExperience >= m_experienceToNextLevel)
 	{

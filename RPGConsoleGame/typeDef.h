@@ -17,3 +17,6 @@ typedef uint64_t exp_t;
 
 // type of the level of the character
 typedef uint16_t level_t;
+
+// generic type for points management
+typedef uint16_t pointM_t;

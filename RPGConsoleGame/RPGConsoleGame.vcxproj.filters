@@ -18,7 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Hp.cpp">
+    <ClCompile Include="PointManager.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="Warrior.cpp">
@@ -36,12 +36,12 @@
     <ClCompile Include="StatsInfo.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="LevelSystem.cpp">
+    <ClCompile Include="PlayerCharacter.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Hp.h">
+    <ClInclude Include="PointManager.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="typeDef.h">
@@ -65,10 +65,10 @@
     <ClInclude Include="Rogue.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="allClassesIncludes.h">
+    <ClInclude Include="PlayerCharacter.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="LevelSystem.h">
+    <ClInclude Include="Colors.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>

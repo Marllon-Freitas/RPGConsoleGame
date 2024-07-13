@@ -1,22 +1,17 @@
 #pragma once
 
-#include "Hp.h"
 #include "statsInfo.h"
-#include "LevelSystem.h"
+#include "PlayerCharacter.h"
 
-class Rogue : public Hp, public StatsInfo, public LevelSystem
+class Rogue : public PlayerCharacterDelegate
 {
 public:
 	Rogue();
 	~Rogue() = default;
 
 	// Getters
-
-	// Setters
-
-	// Functions
-	void levelUp() override;
+	std::string getClassName() override { return std::string("Rogue"); }
 
 private:
-
+	void levelUp() override;
 };

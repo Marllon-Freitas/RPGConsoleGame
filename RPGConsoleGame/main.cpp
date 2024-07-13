@@ -1,21 +1,35 @@
 #include "includes.h"
-#include "allCLassesIncludes.h"
+#include "PlayerCharacter.h"
+
+// Include all the classes
+#include "Cleric.h"
+#include "Rogue.h"
+#include "Warrior.h"
+#include "Wizard.h"
+
 
 int main()
 {
-	// Cleric
-	Cleric cleric;
+	PlayerCharacter cleric(new Warrior());
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 2; i++)
 	{
-		std::cout << "Level: " << cleric.getCurrentLevel() << std::endl;
-		std::cout << "Experience: " << "(" << cleric.getCurrentExperience() << "\\" << cleric.getExperienceToNextLevel() << ")" << std::endl;
-		std::cout << "HP: " << cleric.getMaxHP() << std::endl;
-		std::cout << "Strength: " << cleric.getStrength() << std::endl;
-		std::cout << "Dexterity: " << cleric.getDexterity() << std::endl;
-		std::cout << "Intelligence: " << cleric.getIntelligence() << std::endl;
-		std::cout << "Feith: " << cleric.getFeith() << std::endl;
-		std::cout << std::endl;
+		std::cout << "---------------------------------------\n"
+			<< "|            Character Stats          |\n"
+			<< "---------------------------------------\n"
+			<< "| Class:      " << cleric.getClassName() << "                  |\n"
+			<< "| Level:      " << cleric.getCurrentLevel() << "                       |\n"
+			<< "---------------------------------------\n"
+			<< "| Experience: " << cleric.getCurrentExperience() << " / " << cleric.getExperienceToNextLevel() << "               |\n"
+			<< "| HP:         " << cleric.getCurrentHP() << " / " << cleric.getMaxHP() << "                 |\n"
+			<< "---------------------------------------\n"
+			<< "|               Stats                 |\n"
+			<< "---------------------------------------\n"
+			<< "| STR:        " << cleric.getStrength() << "                       |\n"
+			<< "| DEX:        " << cleric.getDexterity() << "                       |\n"
+			<< "| INT:        " << cleric.getIntelligence() << "                       |\n"
+			<< "| FEITH:      " << cleric.getFeith() << "                      |\n"
+			<< "---------------------------------------\n";
 		cleric.gainExperience(100);
 	}
 

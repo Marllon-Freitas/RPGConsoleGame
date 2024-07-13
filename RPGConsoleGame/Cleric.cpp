@@ -12,13 +12,16 @@ static const stats_t CLERIC_DEX_GROWTH = 1;
 static const stats_t CLERIC_INT_GROWTH = 1;
 static const stats_t CLERIC_FEITH_GROWTH = 2;
 
-Cleric::Cleric() : Hp(CLERIC_BASE_HP, CLERIC_BASE_HP),
-StatsInfo(CLERIC_BASE_STR, CLERIC_BASE_DEX, CLERIC_BASE_INT, CLERIC_BASE_FEITH)
+Cleric::Cleric() : PlayerCharacterDelegate()
 {
+	HP->setMax(CLERIC_BASE_HP);
+	HP->increaseCurrent(CLERIC_BASE_HP);
+	increaseStats(CLERIC_BASE_STR, CLERIC_BASE_DEX, CLERIC_BASE_INT, CLERIC_BASE_FEITH);
 }
 
 void Cleric::levelUp()
 {
-	setMaxHP(getMaxHP() + CLERIC_HP_GROWTH);
+	HP->setMax(HP->getMax() + CLERIC_HP_GROWTH);
+	HP->increaseCurrent(CLERIC_HP_GROWTH);
 	increaseStats(CLERIC_STR_GROWTH, CLERIC_DEX_GROWTH, CLERIC_INT_GROWTH, CLERIC_FEITH_GROWTH);
 }

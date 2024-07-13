@@ -12,13 +12,16 @@ static const stats_t WARRIOR_DEX_GROWTH = 1;
 static const stats_t WARRIOR_INT_GROWTH = 1;
 static const stats_t WARRIOR_FEITH_GROWTH = 1;
 
-Warrior::Warrior() : Hp(WARRIOR_BASE_HP, WARRIOR_BASE_HP),
-StatsInfo(WARRIOR_BASE_STR, WARRIOR_BASE_DEX, WARRIOR_BASE_INT, WARRIOR_BASE_FEITH)
+Warrior::Warrior() : PlayerCharacterDelegate()
 {
+	HP->setMax(WARRIOR_BASE_HP);
+	HP->increaseCurrent(WARRIOR_BASE_HP);
+	increaseStats(WARRIOR_BASE_STR, WARRIOR_BASE_DEX, WARRIOR_BASE_INT, WARRIOR_BASE_FEITH);
 }
 
 void Warrior::levelUp()
 {
-	setMaxHP(getMaxHP() + WARRIOR_HP_GROWTH);
+	HP->setMax(HP->getMax() + WARRIOR_HP_GROWTH);
+	HP->increaseCurrent(WARRIOR_HP_GROWTH);
 	increaseStats(WARRIOR_STR_GROWTH, WARRIOR_DEX_GROWTH, WARRIOR_INT_GROWTH, WARRIOR_FEITH_GROWTH);
 }

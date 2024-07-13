@@ -1,22 +1,17 @@
 #pragma once
 
-#include "Hp.h"
 #include "statsInfo.h"
-#include "LevelSystem.h"
+#include "PlayerCharacter.h"
 
-class Wizard : public Hp, public StatsInfo, public LevelSystem
+class Wizard : public PlayerCharacterDelegate
 {
 public:
 	Wizard();
 	~Wizard() = default;
 
 	// Getters
-
-	// Setters
-
-	// Functions
-	void levelUp() override;
+	std::string getClassName() override { return std::string("Wizard"); }
 
 private:
-
+	void levelUp() override;
 };

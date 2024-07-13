@@ -128,8 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cleric.cpp" />
-    <ClCompile Include="Hp.cpp" />
-    <ClCompile Include="LevelSystem.cpp" />
+    <ClCompile Include="PointManager.cpp" />
+    <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rogue.cpp" />
     <ClCompile Include="StatsInfo.cpp" />
@@ -137,14 +137,14 @@
     <ClCompile Include="Wizard.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="allClassesIncludes.h" />
     <ClInclude Include="Cleric.h" />
+    <ClInclude Include="Colors.h" />
     <ClInclude Include="includes.h" />
-    <ClInclude Include="LevelSystem.h" />
+    <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="Rogue.h" />
     <ClInclude Include="StatsInfo.h" />
     <ClInclude Include="typeDef.h" />
-    <ClInclude Include="Hp.h" />
+    <ClInclude Include="PointManager.h" />
     <ClInclude Include="Warrior.h" />
     <ClInclude Include="Wizard.h" />
   </ItemGroup>

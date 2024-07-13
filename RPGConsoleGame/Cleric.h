@@ -1,22 +1,17 @@
 #pragma once
 
-#include "Hp.h"
 #include "statsInfo.h"
-#include "LevelSystem.h"
+#include "PlayerCharacter.h"
 
-class Cleric : public Hp, public StatsInfo, public LevelSystem
+class Cleric : public PlayerCharacterDelegate
 {
 public:
 	Cleric();
 	~Cleric() = default;
 
 	// Getters
-
-	// Setters
-
-	// Functions
-	void levelUp() override;
+	std::string getClassName() override { return std::string("Cleric"); }
 
 private:
-
+	void levelUp() override;
 };
