@@ -141,6 +141,7 @@
     <ClInclude Include="Buff.h" />
     <ClInclude Include="Cleric.h" />
     <ClInclude Include="Colors.h" />
+    <ClInclude Include="CoreStats.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="Rogue.h" />

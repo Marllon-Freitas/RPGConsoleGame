@@ -2,6 +2,7 @@
 
 #include "includes.h"
 #include "typeDef.h"
+#include "CoreStats.h"
 #include "Buff.h"
 
 class StatsInfo
@@ -12,49 +13,41 @@ public:
 	~StatsInfo() = default;
 
 	// Getters
-	stats_t getBaseStrength() const { return m_BaseStrength; }
-	stats_t getBaseDexterity() const { return m_BaseDexterity; }
-	stats_t getBaseIntelligence() const { return m_BaseIntelligence; }
-	stats_t getBaseFaith() const { return m_BaseFaith; }
-	stats_t getBaseArmor() const { return m_BaseArmor; }
-	stats_t getBaseElementalResistance() const { return m_BaseElementalResistance; }
+	stats_t getBaseStrength() const { return m_BaseStats.strength; }
+	stats_t getBaseDexterity() const { return m_BaseStats.dexterity; }
+	stats_t getBaseIntelligence() const { return m_BaseStats.intelligence; }
+	stats_t getBaseFaith() const { return m_BaseStats.faith; }
+	stats_t getBaseArmor() const { return m_BaseStats.armor; }
+	stats_t getBaseElementalResistance() const { return m_BaseStats.elementalResistance; }
 	// Getters for total stats including buffs
-	stats_t getTotalStrength() const { return m_BaseStrength + m_TotalStrengthFromBuffs; }
-	stats_t getTotalDexterity() const { return m_BaseDexterity + m_TotalDexterityFromBuffs; }
-	stats_t getTotalIntelligence() const { return m_BaseIntelligence + m_TotalIntelligenceFromBuffs; }
-	stats_t getTotalFaith() const { return m_BaseFaith + m_TotalFaithFromBuffs; }
-	stats_t getTotalArmor() const { return m_BaseArmor + m_TotalArmorFromBuffs; }
-	stats_t getTotalElementalResistance() const { return m_BaseElementalResistance + m_TotalElementalResistanceFromBuffs; }
+	stats_t getTotalStrength() const { return m_StatsFromBuffs.strength + m_BaseStats.strength; }
+	stats_t getTotalDexterity() const { return m_StatsFromBuffs.dexterity + m_BaseStats.dexterity; }
+	stats_t getTotalIntelligence() const { return m_StatsFromBuffs.intelligence + m_BaseStats.intelligence; }
+	stats_t getTotalFaith() const { return m_StatsFromBuffs.faith + m_BaseStats.faith; }
+	stats_t getTotalArmor() const { return m_StatsFromBuffs.armor + m_BaseStats.armor; }
+	stats_t getTotalElementalResistance() const { return m_StatsFromBuffs.elementalResistance + m_BaseStats.elementalResistance; }
 
 	// Setters
-	void setStrength(stats_t str) { m_BaseStrength = str; }
-	void setDexterity(stats_t dex) { m_BaseDexterity = dex; }
-	void setIntelligence(stats_t intel) { m_BaseIntelligence = intel; }
-	void setFaith(stats_t faith) { m_BaseFaith = faith; }
-	void setArmor(stats_t armor) { m_BaseArmor = armor; }
-	void setElementalResistance(stats_t elementalResistance) { m_BaseElementalResistance = elementalResistance; }
+	void setStrength(stats_t str) { m_BaseStats.strength = str; }
+	void setDexterity(stats_t dex) { m_BaseStats.dexterity = dex; }
+	void setIntelligence(stats_t intel) { m_BaseStats.intelligence = intel; }
+	void setFaith(stats_t faith) { m_BaseStats.faith = faith; }
+	void setArmor(stats_t armor) { m_BaseStats.armor = armor; }
+	void setElementalResistance(stats_t elementalResistance) { m_BaseStats.elementalResistance = elementalResistance; }
 
 protected:
 	// Buffs
 	std::vector<Buff> m_Buffs;
 
-	stats_t m_BaseStrength;
-	stats_t m_BaseDexterity;
-	stats_t m_BaseIntelligence;
-	stats_t m_BaseFaith;
-	stats_t m_BaseArmor;				//physical damage reduction
-	stats_t m_BaseElementalResistance;	//elemental damage reduction
+	// Base stats
+	CoreStats m_BaseStats;
 
 	// Stats with buffs
-	stats_t m_TotalStrengthFromBuffs = 0;
-	stats_t m_TotalDexterityFromBuffs = 0;
-	stats_t m_TotalIntelligenceFromBuffs = 0;
-	stats_t m_TotalFaithFromBuffs = 0;
-	stats_t m_TotalArmorFromBuffs = 0;
-	stats_t m_TotalElementalResistanceFromBuffs = 0;
+	CoreStats m_StatsFromBuffs;
 
 	// Functions
 	void increaseStats(stats_t str, stats_t dex, stats_t intel, stats_t faith, stats_t armor, stats_t elementalResistance);
+	void increaseStats(CoreStats stats);
 	void addNewBuff(Buff buff);
 
 private:

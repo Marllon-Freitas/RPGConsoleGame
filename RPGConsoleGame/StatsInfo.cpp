@@ -9,12 +9,12 @@ StatsInfo::StatsInfo(
 	stats_t elementalResistance = 0
 )
 {
-	m_BaseStrength = str;
-	m_BaseDexterity = dex;
-	m_BaseIntelligence = intel;
-	m_BaseFaith = faith;
-	m_BaseArmor = armor;
-	m_BaseElementalResistance = elementalResistance;
+	m_BaseStats.strength = str;
+	m_BaseStats.dexterity = dex;
+	m_BaseStats.intelligence = intel;
+	m_BaseStats.faith = faith;
+	m_BaseStats.armor = armor;
+	m_BaseStats.elementalResistance = elementalResistance;
 }
 
 void StatsInfo::increaseStats(
@@ -26,12 +26,17 @@ void StatsInfo::increaseStats(
 	stats_t elementalResistance = 0
 )
 {
-	m_BaseStrength += str;
-	m_BaseDexterity += dex;
-	m_BaseIntelligence += intel;
-	m_BaseFaith += faith;
-	m_BaseArmor += armor;
-	m_BaseElementalResistance += elementalResistance;
+	m_BaseStats.strength += str;
+	m_BaseStats.dexterity += dex;
+	m_BaseStats.intelligence += intel;
+	m_BaseStats.faith += faith;
+	m_BaseStats.armor += armor;
+	m_BaseStats.elementalResistance += elementalResistance;
+}
+
+void StatsInfo::increaseStats(CoreStats stats)
+{
+	m_BaseStats += stats;
 }
 
 void StatsInfo::addNewBuff(Buff buff)
@@ -52,47 +57,18 @@ void StatsInfo::addNewBuff(Buff buff)
 
 void StatsInfo::recalculateBuffs()
 {
-	stats_t totalStrFromBuffs = 0;
-	stats_t totalDexFromBuffs = 0;
-	stats_t totalIntFromBuffs = 0;
-	stats_t totalFaithFromBuffs = 0;
-	stats_t totalArmorFromBuffs = 0;
-	stats_t totalElementalResistanceFromBuffs = 0;
+	CoreStats tempTotalStats = m_BaseStats;
 
-	for (auto& buff : m_Buffs)
+	for (const auto& buff : m_Buffs)
 	{
 		if (buff.isDebuff)
 		{
-			totalStrFromBuffs -= buff.m_Strength;
-			totalDexFromBuffs -= buff.m_Dexterity;
-			totalIntFromBuffs -= buff.m_Intelligence;
-			totalFaithFromBuffs -= buff.m_Faith;
-			totalArmorFromBuffs -= buff.m_Armor;
-			totalElementalResistanceFromBuffs += buff.m_ElementalResistance;
+			tempTotalStats -= buff.m_BuffedStats;
 		}
 		else {
-			totalStrFromBuffs += buff.m_Strength;
-			totalDexFromBuffs += buff.m_Dexterity;
-			totalIntFromBuffs += buff.m_Intelligence;
-			totalFaithFromBuffs += buff.m_Faith;
-			totalArmorFromBuffs += buff.m_Armor;
-			totalElementalResistanceFromBuffs += buff.m_ElementalResistance;
+			tempTotalStats += buff.m_BuffedStats;
 		}
 	}
 
-	m_TotalStrengthFromBuffs = totalStrFromBuffs;
-	m_TotalDexterityFromBuffs = totalDexFromBuffs;
-	m_TotalIntelligenceFromBuffs = totalIntFromBuffs;
-	m_TotalFaithFromBuffs = totalFaithFromBuffs;
-	m_TotalArmorFromBuffs = totalArmorFromBuffs;
-	m_TotalElementalResistanceFromBuffs = totalElementalResistanceFromBuffs;
-
-	std::cout << "totalStrFromBuffsaaaaaaaaaaaaaaaaaa: " << m_TotalStrengthFromBuffs << std::endl;
-
-	if (m_TotalStrengthFromBuffs < 0) m_TotalStrengthFromBuffs = 0;
-	if (m_TotalDexterityFromBuffs < 0) m_TotalDexterityFromBuffs = 0;
-	if (m_TotalIntelligenceFromBuffs < 0) m_TotalIntelligenceFromBuffs = 0;
-	if (m_TotalFaithFromBuffs < 0) m_TotalFaithFromBuffs = 0;
-	if (m_TotalArmorFromBuffs < 0) m_TotalArmorFromBuffs = 0;
-	if (m_TotalElementalResistanceFromBuffs < 0) m_TotalElementalResistanceFromBuffs = 0;
+	m_StatsFromBuffs = tempTotalStats;
 }
